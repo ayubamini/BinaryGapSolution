@@ -15,23 +15,61 @@ namespace BinaryGapSolution
 
         private static int GetBinaryGap(char[] binaryString)
         {
-            var checkSum = 0;
-            var zeroCount = 0;
+            var maxGap = 0;
+            var gapCounter = 0;
+            var zeroCounter = 0;
 
             for (var i = 0; i < binaryString.Length; i++)
             {
                 if (binaryString[i] == '1')
                 {
-                    checkSum++;
+                    gapCounter++;
+                }
+
+                if (binaryString[i] == '0')
+                {
+                    zeroCounter++;
                 }
             }
 
-            if (checkSum == 0 || checkSum == 1)
+            if (zeroCounter == 0)
             {
                 return 0;
             }
 
-            return binaryString.Length;
+            if (gapCounter == 1 || gapCounter == 0)
+            {
+                return 0;
+            }
+
+            for (var i = 0; i < binaryString.Length; i++)
+            {
+                var lastValueIsOne = false;
+
+                if (binaryString[i] == '1')
+                {
+                    gapCounter = 0;
+                    for (var j = i + 1; j < binaryString.Length ; j++)
+                    {
+                        if (binaryString[j] == '1')
+                        {
+                            i = j;
+                            i--;
+                            lastValueIsOne = true;
+                            break;
+                        }
+
+                        gapCounter++;
+                    }
+
+                    if (gapCounter > maxGap && lastValueIsOne)
+                    {
+                        maxGap = gapCounter;
+                    }
+                }
+            }
+
+            return maxGap;
         }
     }
 }
