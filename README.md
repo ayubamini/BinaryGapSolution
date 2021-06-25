@@ -1,4 +1,4 @@
-# BinaryGapSolution
+# BinaryGap Problem
 Find longest sequence of zeros in binary representation of an integer.
 
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
@@ -16,3 +16,6 @@ For example, given N = 1041 the function should return 5, because N has binary r
 Write an efficient algorithm for the following assumptions:
 
 N is an integer within the range [1..2,147,483,647].
+
+# Result
+
